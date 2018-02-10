@@ -100,13 +100,20 @@ public class ChooseAreaFragment extends Fragment {
                 if (currentLevel == LEVEL_PROVINCE) {
                     selectedProcince = provinceList.get(position);
                     queryCities(); // 这里面就包含了 数据获取 和 UI 操作
-                    currentLevel = LEVEL_CITY;
+//                    currentLevel = LEVEL_CITY;
+                    // currentLevel 的设置要放在上面的 queryCities 方法中
+                    // 因为在 backButton 被点击时做两件事：
+                    // 1，拉取显示上一层级的数据
+                    // 2，修改 currentLevel 为上一层级
+                    // currentLevel 的修改总是伴随着 queryCities 方法
+                    // 所以把 currentLevel 的修改放在方法中比较好
+                    // 这样可以：减少重复的代码，防止忘了修改 currentLevel
 
                 } else if (currentLevel == LEVEL_CITY) {
                     Log.d(TAG, "onItemClick: currentLevel == LEVEL_CITY");
                     selectedCity = cityityList.get(position);
                     queryCounties();
-                    currentLevel = LEVEL_COUNTY;
+//                    currentLevel = LEVEL_COUNTY;
 
                 } else if (currentLevel == LEVEL_COUNTY) {
                     Log.d(TAG, "onItemClick: currentLevel == LEVEL_COUNTY");
@@ -152,7 +159,7 @@ public class ChooseAreaFragment extends Fragment {
             }
             adapter.notifyDataSetChanged();
             listView.setSelection(0);
-//            currentLevel = LEVEL_PROVINCE;
+            currentLevel = LEVEL_PROVINCE;
         } else {
             // From server
             queryFromServer(apiUrl, "province");
@@ -176,7 +183,7 @@ public class ChooseAreaFragment extends Fragment {
             }
             adapter.notifyDataSetChanged();
             listView.setSelection(0);
-//            currentLevel = LEVEL_CITY;
+            currentLevel = LEVEL_CITY;
 
         } else {
             Integer provinceId = selectedProcince.getProvinceId();
@@ -204,7 +211,7 @@ public class ChooseAreaFragment extends Fragment {
             }
             adapter.notifyDataSetChanged();
             listView.setSelection(0);
-//            currentLevel = LEVEL_COUNTY;
+            currentLevel = LEVEL_COUNTY;
         } else {
             int selectedProvinceId = selectedProcince.getProvinceId();
             int selectedCityId = selectedCity.getCityId();
