@@ -1,4 +1,4 @@
-package com.coolweathertest.android;
+package com.coolweathertest.android.db;
 
 import org.litepal.crud.DataSupport;
 
@@ -11,7 +11,7 @@ public class County extends DataSupport {
     private int cityId;
     private int countyId;
     private String countyName;
-    private String weatherId;
+    private String weatherCode;
 
     public int getId() {
         return id;
@@ -45,11 +45,11 @@ public class County extends DataSupport {
         this.countyName = countyName;
     }
 
-    public String getWeatherId() {
-        return weatherId;
+    public String getWeatherCode() {
+        return weatherCode;
     }
 
-    public void setWeatherId(String weatherId) {
-        this.weatherId = weatherId;
+    public void setWeatherCode(String weatherCode) {
+        this.weatherCode = weatherCode;
     }
 }

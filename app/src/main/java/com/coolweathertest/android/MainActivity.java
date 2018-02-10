@@ -1,9 +1,11 @@
 package com.coolweathertest.android;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import java.lang.ref.SoftReference;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,4 +14,5 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
 }

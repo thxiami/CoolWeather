@@ -2,11 +2,11 @@
 <litepal>
     <dbname value="CoolWeather" ></dbname>
 
-    <version value="1" ></version>
+    <version value="2" ></version>
 
     <list>
-        <mapping class="com.coolweathertest.android.Province"></mapping>
-        <mapping class="com.coolweathertest.android.City"></mapping>
-        <mapping class="com.coolweathertest.android.County"></mapping>
+        <mapping class="com.coolweathertest.android.db.Province"></mapping>
+        <mapping class="com.coolweathertest.android.db.City"></mapping>
+        <mapping class="com.coolweathertest.android.db.County"></mapping>
     </list>
 </litepal>
